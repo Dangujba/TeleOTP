@@ -11,6 +11,8 @@ The **TeleOTP** is a PHP library designed to interact with a Telegram-based OTP 
    - [Setting Parameters](#setting-parameters)
    - [Sending OTP](#sending-otp)
    - [Verifying OTP](#verifying-otp)
+   - [Revoking OTP](#revoking-otp)
+   - [Checking Sending Ability](#check-ability)
 4. [Methods](#methods)
    - [Constructor](#constructor)
    - [Setters and Getters](#setters-and-getters)
@@ -23,8 +25,7 @@ The **TeleOTP** is a PHP library designed to interact with a Telegram-based OTP 
 
 The **TeleOTP** library interacts with the Telegram OTP gateway API to facilitate sending and verifying OTPs. You can set parameters such as the phone number, code length, callback URL, and more. The library handles communication with the Telegram API and provides methods for both sending OTPs and verifying their validity.
 
-
-### Updated `README.md` Example:
+**Note**: For testing case you can simply use default phone number provided during registration which linked together with the [Telegram Gateway API Token](https://gateway.telegram.org)
 
 ## Installation
 
@@ -115,7 +116,7 @@ If you prefer not to use Composer, you can manually include the `TeleOTP.php` fi
    You can either download the ZIP file from GitHub or clone the repository using Git:
 
    ```bash
-   git clone https://github.com/your-username/teleotp.git
+   git clone https://github.com/Dangujba/TeleOTP.git
    ```
 
 2. **Include the `TeleOTP.php` file:**
@@ -167,9 +168,11 @@ $teleOTP = new TeleOTP('YOUR_API_TOKEN');
 You can set various parameters using the provided setter methods.
 
 ```php
-$teleOTP->setPhoneNumber('1234567890');
-$teleOTP->setCodeLength(6);
+$teleOTP->setCodeLength(6); // Code Length must be provided if setCode not used
 $teleOTP->setCallbackUrl('https://example.com/callback');
+$teleOTP->setPhoneNumber('+234567890');
+// setCode will be used if dont want to use telegram default OTP
+$teleOTP->setCode('223344'); // 6 to 8 digits
 ```
 
 ### Sending OTP
@@ -177,7 +180,7 @@ $teleOTP->setCallbackUrl('https://example.com/callback');
 To send an OTP, simply call the `sendOTP` method, passing in the phone number (if not already set).
 
 ```php
-$response = $teleOTP->sendOTP('1234567890');
+$response = $teleOTP->sendOTP('+1234567890');
 ```
 
 This will send an OTP to the specified phone number and return the API response.
@@ -187,12 +190,28 @@ This will send an OTP to the specified phone number and return the API response.
 After receiving the OTP, you can verify it using the `validateCode` method. Pass the request ID and the code entered by the user.
 
 ```php
+// If not request id provided, last request id will be used.
 $verificationResult = $teleOTP->validateCode([
     'request_id' => 'some_request_id',
     'code' => '123456'
 ]);
 ```
+### Revoking OTP
+Use this method to revoke a verification message that was sent previously. Returns True if the revocation request was received. However, this does not guarantee that the message will be deleted. For example, it will not be removed if the recipient has already read it.
 
+```php
+$teleOTP->revokeCode();
+```
+### Check Sending Ability
+Use this method to optionally check the ability to send a verification message to the specified phone number. If the ability to send is confirmed, a fee will apply according to the pricing plan. After checking, you can send a verification message using the sendOTP method, providing the true from this response.
+
+Within the scope of a request_id, only one fee can be charged. Calling sendOTP once with the returned request_id will be free of charge, while repeated calls will result in an error. Conversely, calls that don't include a request_id will spawn new requests and incur the respective fees accordingly. Note that this method is always free of charge when used to send codes to your own phone number.
+
+```php
+$teleOTP->checkAbility(); // if want to use already provided phone number else,
+
+$teleOTP->checkAbility('+234123456');
+```
 ## Methods
 
 ### Constructor
