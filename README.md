@@ -88,9 +88,6 @@ use TeleOTP\TeleOTP;
 // Instantiate the TeleOTP class
 $teleOtp = new TeleOTP('YOUR_API_TOKEN');
 
-// Example function to send OTP
-$teleOtp->sendOTP('PHONE_NUMBER'); // Provide the phone number to send OTP to e.g +2341234567
-
 // Set code i.e your otp instead of letting telegram to generate it for you
 $teleOtp->setCode('666666');
 
@@ -103,6 +100,9 @@ $body = [
    'purpose' => 'registration'
 ];
 $teleOtp->setPayload($body);
+
+// Example function to send OTP
+$teleOtp->sendOTP('PHONE_NUMBER'); // Provide the phone number to send OTP to e.g +2341234567
 ```
 
 
@@ -138,7 +138,7 @@ If you prefer not to use Composer, you can manually include the `TeleOTP.php` fi
 
 ### Configuration
 
-Make sure to replace `'YOUR_API_TOKEN'` with your actual API token provided by the [https://gateway.telegram.org](Telegram Gateway API).
+Make sure to replace `'YOUR_API_TOKEN'` with your actual API token provided by the (Telegram Gateway API)[https://gateway.telegram.org].
 
 ---
 
