@@ -1,6 +1,3 @@
-
-
-
 # TeleOTP Library
 
 The **TeleOTP** is a PHP library designed to interact with a Telegram-based OTP (One-Time Password) gateway system, allowing for the generation, sending, and verification of OTPs via Telegram. This library offers a set of methods to manage OTP functionality, including API communication, request handling, and response parsing.
@@ -42,6 +39,72 @@ composer require dangujba/teleotp
 ```
 
 This will download the package and its dependencies to your project.
+Once you've installed your package via Composer, using it in your project is straightforward. Here's how you can set it up and use it:
+
+### Steps for Using `TeleOTP` After Installing via Composer
+
+1. **Install via Composer**  
+   If you haven't already done this, install the package by running the following command in your project directory:
+
+   ```bash
+   composer require dangujba/teleotp 
+   ```
+
+  
+
+2. **Include Composer's Autoloader**  
+   Composer automatically generates an autoloader that can be included to access all installed packages. At the top of your PHP script, include the Composer autoloader:
+
+   ```php
+   require 'vendor/autoload.php';
+   ```
+
+   This will load all dependencies installed via Composer, including `TeleOTP`.
+
+3. **Instantiate and Use `TeleOTP`**  
+   After including the autoloader, you can instantiate the `TeleOTP` class and start using it:
+
+   ```php
+   use TeleOTP\TeleOTP; 
+
+   // Instantiate the class with your API token
+   $teleOtp = new TeleOTP('YOUR_API_TOKEN');
+
+   // Example usage
+   $teleOtp->sendOtp('PHONE_NUMBER'); // Replace with an actual phone number
+   ```
+
+   Ensure that `YOUR_API_TOKEN` is replaced with your actual API token for the service you’re using with `TeleOTP`.
+
+### Example Code
+
+```php
+// Include Composer's autoloader
+require 'vendor/autoload.php';
+
+// Use the TeleOTP class (adjust the namespace as needed)
+use TeleOTP\TeleOTP;
+
+// Instantiate the TeleOTP class
+$teleOtp = new TeleOTP('YOUR_API_TOKEN');
+
+// Example function to send OTP
+$teleOtp->sendOTP('PHONE_NUMBER'); // Provide the phone number to send OTP to e.g +2341234567
+
+// Set code i.e your otp instead of letting telegram to generate it for you
+$teleOtp->setCode('666666');
+
+// Set callback url (optional)
+$teleOtp->setCallbackUrl('https://github.com');
+
+// Set custom payload (optional)
+$body = [
+   'id' => '1234',
+   'purpose' => 'registration'
+];
+$teleOtp->setPayload($body);
+```
+
 
 ### Option 2: Manual Installation
 
