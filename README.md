@@ -38,7 +38,7 @@ You can install the `TeleOTP` library either manually or via Composer.
 The recommended way to install `TeleOTP` is through Composer. To do so, run the following command:
 
 ```bash
-composer require your-username/teleotp
+composer require dangujba/teleotp
 ```
 
 This will download the package and its dependencies to your project.
