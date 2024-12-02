@@ -3,7 +3,7 @@
 
 # TeleOTP Library
 
-The **TeleOTP** class is a PHP library designed to interact with a Telegram-based OTP (One-Time Password) system, allowing for the generation, sending, and verification of OTPs via Telegram. This library offers a set of methods to manage OTP functionality, including API communication, request handling, and response parsing.
+The **TeleOTP** is a PHP library designed to interact with a Telegram-based OTP (One-Time Password) gateway system, allowing for the generation, sending, and verification of OTPs via Telegram. This library offers a set of methods to manage OTP functionality, including API communication, request handling, and response parsing.
 
 ## Table of Contents
 
@@ -24,19 +24,74 @@ The **TeleOTP** class is a PHP library designed to interact with a Telegram-base
 
 ## Overview
 
-The **TeleOTP** class interacts with the Telegram OTP gateway API to facilitate sending and verifying OTPs. You can set parameters such as the phone number, code length, callback URL, and more. The library handles communication with the Telegram API and provides methods for both sending OTPs and verifying their validity.
+The **TeleOTP** library interacts with the Telegram OTP gateway API to facilitate sending and verifying OTPs. You can set parameters such as the phone number, code length, callback URL, and more. The library handles communication with the Telegram API and provides methods for both sending OTPs and verifying their validity.
 
+
+Ah, I see! You want to add installation instructions in your project's `README.md` file. Here's how you can structure the Markdown for installation instructions, including the Composer setup and manual installation:
+
+### Updated `README.md` Example:
+
+```markdown
 ## Installation
 
-1. Download or clone the repository.
-2. Include the `TeleOTP.php` file in your project.
+You can install the `TeleOTP` library either manually or via Composer.
 
-```php
-require_once 'TeleOTP.php';
+### Option 1: Install via Composer
+
+The recommended way to install `TeleOTP` is through Composer. To do so, run the following command:
+
+```bash
+composer require your-username/teleotp
 ```
 
-3. Instantiate the `TeleOTP` class and set up your API token.
+This will download the package and its dependencies to your project.
 
+### Option 2: Manual Installation
+
+If you prefer not to use Composer, you can manually include the `TeleOTP.php` file in your project.
+
+1. **Download or clone the repository:**
+
+   You can either download the ZIP file from GitHub or clone the repository using Git:
+
+   ```bash
+   git clone https://github.com/your-username/teleotp.git
+   ```
+
+2. **Include the `TeleOTP.php` file:**
+
+   Include the `TeleOTP.php` file in your project:
+
+   ```php
+   require_once 'path/to/TeleOTP.php';
+   ```
+
+   Replace `path/to` with the actual path to the `TeleOTP.php` file in your project.
+
+3. **Instantiate the `TeleOTP` class:**
+
+   Once included, instantiate the `TeleOTP` class and set up your API token:
+
+   ```php
+   $teleOtp = new TeleOTP('YOUR_API_TOKEN');
+   ```
+
+### Configuration
+
+Make sure to replace `'YOUR_API_TOKEN'` with your actual API token provided by the [https://gateway.telegram.org](Telegram Gateway API).
+
+---
+
+For more details on usage and available features, refer to the documentation or check the examples in the repository.
+```
+
+### Explanation:
+
+- **Option 1 (Composer Installation):** Instructions on installing via Composer with the `composer require` command.
+- **Option 2 (Manual Installation):** Instructions for cloning or downloading the repository and including the `TeleOTP.php` file manually.
+- The rest of the file explains how to instantiate the class and configure the API token.
+
+Ensure to replace `your-username/teleotp` with the actual name of your Composer package.
 ## Usage
 
 ### Class Initialization
