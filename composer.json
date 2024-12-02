@@ -1,0 +1,25 @@
+{
+    "name": "dangujba/teleotp",
+    "description": "A PHP library for Telegram-based OTP authentication.",
+    "keywords": ["telegram", "otp", "authentication", "gateway"],
+    "homepage": "https://github.com/Dangujba/TeleOTP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Muhammad Baba Goni",
+            "email": "muhammadgoni51@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TeleOTP\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-curl": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
