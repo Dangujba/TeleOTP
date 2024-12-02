@@ -309,6 +309,3 @@ try {
 ## License
 
 The TeleOTP library is released under the MIT License. See the LICENSE file for more information.
-
-
-This documentation includes the main sections you would typically need for a GitHub project, including installation instructions, usage examples, method descriptions, and error handling. Feel free to modify it based on any additional functionality or details you might want to add.
