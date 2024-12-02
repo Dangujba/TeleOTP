@@ -138,12 +138,12 @@ If you prefer not to use Composer, you can manually include the `TeleOTP.php` fi
 
 ### Configuration
 
-Make sure to replace `'YOUR_API_TOKEN'` with your actual API token provided by the (https://gateway.telegram.org)[Telegram Gateway API].
+Make sure to replace `'YOUR_API_TOKEN'` with your actual API token provided by the [Telegram Gateway API](https://gateway.telegram.org).
 
 ---
 
 For more details on usage and available features, refer to the documentation or check the examples in the repository.
-```
+
 
 ### Explanation:
 
