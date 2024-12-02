@@ -27,11 +27,8 @@ The **TeleOTP** is a PHP library designed to interact with a Telegram-based OTP 
 The **TeleOTP** library interacts with the Telegram OTP gateway API to facilitate sending and verifying OTPs. You can set parameters such as the phone number, code length, callback URL, and more. The library handles communication with the Telegram API and provides methods for both sending OTPs and verifying their validity.
 
 
-Ah, I see! You want to add installation instructions in your project's `README.md` file. Here's how you can structure the Markdown for installation instructions, including the Composer setup and manual installation:
-
 ### Updated `README.md` Example:
 
-```markdown
 ## Installation
 
 You can install the `TeleOTP` library either manually or via Composer.
